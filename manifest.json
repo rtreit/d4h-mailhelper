@@ -1,0 +1,51 @@
+{
+  "name": "D4H Mail Helper",
+  "description": "Copy a ready-made exercise list to the clipboard.",
+  "version": "0.1",
+  "manifest_version": 3,
+  "icons": { 
+    "16": "icon.png",
+    "48": "icon.png", 
+    "128": "icon.png" 
+  },
+
+  "action": {
+    "default_title": "D4H Mail Helper",
+    "default_icon": "icon.png"
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.d4h.com/team/exercises*",
+        "*://*.d4h.com/*/team/exercises*", 
+        "*://d4h.com/team/exercises*",
+        "*://d4h.com/*/team/exercises*",
+        "*://*.d4h.org/team/exercises*",
+        "*://*.d4h.org/*/team/exercises*",
+        "*://app.d4h.com/team/exercises*",
+        "*://app.d4h.com/*/team/exercises*",
+        "*://secure.d4h.com/team/exercises*",
+        "*://secure.d4h.com/*/team/exercises*",
+        "*://*.team-manager.us.d4h.com/team/exercises*",
+        "*://*.team-manager.us.d4h.com/*/team/exercises*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+
+  "permissions": ["clipboardWrite", "scripting", "activeTab"],
+  "host_permissions": [
+    "*://*.d4h.com/*",
+    "*://*.d4h.org/*",
+    "*://app.d4h.com/*",
+    "*://secure.d4h.com/*",
+    "*://*.team-manager.us.d4h.com/*"
+  ]
+}
