@@ -3,13 +3,14 @@
 // Function to inject the content script
 function runContentScript(tab) {
   console.log("D4H Mail Helper: Browser action clicked, attempting to inject script.");
-  if (tab.url && tab.url.includes("/team/exercises")) {
+  const supported = /\/team\/(?:exercises|incidents|events)/.test(tab.url || "");
+  if (supported) {
     chrome.scripting.executeScript({
       target: { tabId: tab.id, allFrames: true },
       files: ["content.js"],
     });
   } else {
-    console.log("D4H Mail Helper: Not a D4H exercises page.");
+    console.log("D4H Mail Helper: Not a supported page.");
   }
 }
 

@@ -3,44 +3,70 @@
   "description": "Copy a ready-made exercise list to the clipboard.",
   "version": "0.1",
   "manifest_version": 3,
-  "icons": { 
+  "icons": {
     "16": "icon.png",
-    "48": "icon.png", 
-    "128": "icon.png" 
+    "48": "icon.png",
+    "128": "icon.png"
   },
-
   "action": {
     "default_title": "D4H Mail Helper",
     "default_icon": "icon.png"
   },
-
   "background": {
     "service_worker": "background.js"
   },
-
   "content_scripts": [
     {
       "matches": [
         "*://*.d4h.com/team/exercises*",
-        "*://*.d4h.com/*/team/exercises*", 
+        "*://*.d4h.com/team/incidents*",
+        "*://*.d4h.com/team/events*",
+        "*://*.d4h.com/*/team/exercises*",
+        "*://*.d4h.com/*/team/incidents*",
+        "*://*.d4h.com/*/team/events*",
         "*://d4h.com/team/exercises*",
+        "*://d4h.com/team/incidents*",
+        "*://d4h.com/team/events*",
         "*://d4h.com/*/team/exercises*",
+        "*://d4h.com/*/team/incidents*",
+        "*://d4h.com/*/team/events*",
         "*://*.d4h.org/team/exercises*",
+        "*://*.d4h.org/team/incidents*",
+        "*://*.d4h.org/team/events*",
         "*://*.d4h.org/*/team/exercises*",
+        "*://*.d4h.org/*/team/incidents*",
+        "*://*.d4h.org/*/team/events*",
         "*://app.d4h.com/team/exercises*",
+        "*://app.d4h.com/team/incidents*",
+        "*://app.d4h.com/team/events*",
         "*://app.d4h.com/*/team/exercises*",
+        "*://app.d4h.com/*/team/incidents*",
+        "*://app.d4h.com/*/team/events*",
         "*://secure.d4h.com/team/exercises*",
+        "*://secure.d4h.com/team/incidents*",
+        "*://secure.d4h.com/team/events*",
         "*://secure.d4h.com/*/team/exercises*",
+        "*://secure.d4h.com/*/team/incidents*",
+        "*://secure.d4h.com/*/team/events*",
         "*://*.team-manager.us.d4h.com/team/exercises*",
-        "*://*.team-manager.us.d4h.com/*/team/exercises*"
+        "*://*.team-manager.us.d4h.com/team/incidents*",
+        "*://*.team-manager.us.d4h.com/team/events*",
+        "*://*.team-manager.us.d4h.com/*/team/exercises*",
+        "*://*.team-manager.us.d4h.com/*/team/incidents*",
+        "*://*.team-manager.us.d4h.com/*/team/events*"
       ],
-      "js": ["content.js"],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_idle",
       "all_frames": true
     }
   ],
-
-  "permissions": ["clipboardWrite", "scripting", "activeTab"],
+  "permissions": [
+    "clipboardWrite",
+    "scripting",
+    "activeTab"
+  ],
   "host_permissions": [
     "*://*.d4h.com/*",
     "*://*.d4h.org/*",
