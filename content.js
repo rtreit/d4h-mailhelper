@@ -1,6 +1,8 @@
 (function () {
   // Add version number for debugging
-  const VERSION = "0.4";
+
+  const VERSION = "0.5";
+
   console.log(`D4H Mail Helper v${VERSION}: Content script loaded on ${window.location.href}`);
   
   // ----- helper to make <a> … </a> blocks -----------------------------
@@ -86,8 +88,8 @@
           if (ev && dt) {
             const what = makeAnchor(ev.href, ev.innerText);
             const when = makeAnchor(dt.href, dt.innerText);
-            // Return a string for a list item with em dash
-            return [`  <li>${what} — ${when}</li>`];
+            // Return a string for a list item with em dash and tight spacing
+            return [`  <li style="margin:0;line-height:1.2">${what} — ${when}</li>`];
           }
           return [];
         }).join("\n");
