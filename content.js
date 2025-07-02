@@ -88,11 +88,11 @@
           if (ev && dt) {
             const what = makeAnchor(ev.href, ev.innerText);
             const when = makeAnchor(dt.href, dt.innerText);
-            // Return a string for a list item with em dash and tight spacing
-            return [`  <li style="margin:0;line-height:1.2">${what} — ${when}</li>`];
+            // Return a string for a list item with aggressive spacing control
+            return [`<li style="margin:0 !important;padding:0 !important;margin-top:0 !important;margin-bottom:0 !important;line-height:1.0 !important;display:list-item !important;">${what} — ${when}</li>`];
           }
           return [];
-        }).join("\n");
+        }).join("");
 
         // If no rows were found, alert the user and stop
         if (!listItems) {
@@ -100,8 +100,8 @@
           return;
         }
 
-        // Assemble the HTML list with clean formatting
-        const htmlList = `<ul style="margin:0;padding-left:20px">\n${listItems}\n</ul>`;
+        // Assemble the HTML list with aggressive spacing control
+        const htmlList = `<ul style="margin:0 !important;margin-top:0 !important;margin-bottom:0 !important;padding:0 !important;padding-left:1.2em !important;padding-top:0 !important;padding-bottom:0 !important;line-height:1.0 !important;list-style-type:disc !important;">${listItems}</ul>`;
         console.log("D4H Mail Helper: Generated HTML:", htmlList);
 
         // --- Use simpler clipboard method first ---
