@@ -1,6 +1,8 @@
 (function () {
   // Add version number for debugging
+
   const VERSION = "0.5";
+
   console.log(`D4H Mail Helper v${VERSION}: Content script loaded on ${window.location.href}`);
   
   // ----- helper to make <a> … </a> blocks -----------------------------

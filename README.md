@@ -11,6 +11,7 @@ The main functionality is to provide an easy way to generate email-ready links f
 - **One-Click Copying**: Adds a "Copy" button to the list pages (Exercises, Incidents, Events).
 - **Chronological Order**: Automatically sorts the items from soonest to latest.
 - **HTML Formatting**: Creates a clean, bulleted list with clickable links and minimal spacing.
+
 - **Email-Ready**: The copied format is designed to paste perfectly into D4H emails.
 
 ## Installation and Usage
