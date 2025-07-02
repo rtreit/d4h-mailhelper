@@ -1,11 +1,20 @@
 (function () {
   // Add version number for debugging
-  const VERSION = "0.3";
+  const VERSION = "0.4";
   console.log(`D4H Mail Helper v${VERSION}: Content script loaded on ${window.location.href}`);
   
   // ----- helper to make <a> … </a> blocks -----------------------------
   const makeAnchor = (href, text) =>
     `<a href="${href}">${text.replace(/\s+/g, " ").trim()}</a>`;
+
+  // Determine which type of items we are on (exercises, incidents, events)
+  const ITEM_LABEL = (() => {
+    const url = window.location.href;
+    if (/\/incidents/.test(url)) return "Incidents";
+    if (/\/events/.test(url)) return "Events";
+    if (/\/exercises/.test(url)) return "Exercises";
+    return "Items";
+  })();
 
   // ----- add the UI button --------------------------------------------
   function addButton() {
@@ -20,7 +29,7 @@
     // --- Create the Button Element ---
     const btn = document.createElement("button");
     btn.id = "d4h-mail-helper-btn";
-    btn.textContent = "Copy Exercises";
+    btn.textContent = `Copy ${ITEM_LABEL}`;
 
     // --- Create the Overlay Container ---
     const overlay = document.createElement("div");
@@ -71,7 +80,7 @@
         // Map rows to HTML list item strings
         const listItems = rows.flatMap((tr) => {
           const links = Array.from(tr.querySelectorAll("a"));
-          const ev = links.find((a) => /\/exercises\/view\//.test(a.href));
+          const ev = links.find((a) => /\/(?:exercises|incidents|events)\/view\//.test(a.href));
           const dt = links.find((a) => /\/calendar\/day/.test(a.href));
 
           if (ev && dt) {
@@ -85,7 +94,7 @@
 
         // If no rows were found, alert the user and stop
         if (!listItems) {
-          alert("No valid exercise rows found to copy.");
+          alert("No valid rows found to copy.");
           return;
         }
 
@@ -161,7 +170,7 @@
       document.body.removeChild(container);
 
       if (success) {
-        alert('Formatted exercise list copied to clipboard (fallback method)!');
+        alert('Formatted list copied to clipboard (fallback method)!');
       } else {
         alert('Could not copy list. See console for details.');
       }

@@ -1,15 +1,15 @@
 # D4H Mail Helper Extension
 
-This browser extension simplifies the process of sharing D4H training exercises in emails. It adds a button to the exercises page that copies a formatted list of upcoming events to your clipboard, ready to be pasted into a new message in D4H's communication system.
+This browser extension simplifies the process of sharing D4H links in emails. Originally designed for the Training **Exercises** page, it now works on the Operations tabs such as **Incidents** and **Events**. The extension adds a button to these tables and copies a formatted list of items to your clipboard, ready to be pasted into a new D4H message.
 
-The main functionality is to provide an easy way to generate links for training exercises that are compatible with D4H's e-mail system.
+The main functionality is to provide an easy way to generate email-ready links for any of these pages.
 
 ![Extension Icon](icon.png)
 
 ## Key Features
 
-- **One-Click Copying**: Adds a "Copy Exercises" button to the D4H exercises page.
-- **Chronological Order**: Automatically sorts the exercises from soonest to latest.
+- **One-Click Copying**: Adds a "Copy" button to the list pages (Exercises, Incidents, Events).
+- **Chronological Order**: Automatically sorts the items from soonest to latest.
 - **HTML Formatting**: Creates a clean, bulleted list with clickable links.
 - **Email-Ready**: The copied format is designed to paste perfectly into D4H emails.
 
@@ -43,7 +43,7 @@ No technical knowledge is needed to install this extension. Follow these steps f
 
 ## How to Use
 
-1. Log in to your D4H account and go to the **Team > Exercises** page.
-2. You will see an orange **"Copy Exercises"** button in the top-right corner of the page.
+1. Log in to your D4H account and open one of the list pages (e.g. **Exercises**, **Incidents**, or **Events**).
+2. You will see an orange **"Copy"** button in the top-right corner of the table.
 3. Click the button. A confirmation message will appear, letting you know the list has been copied.
-4. Go to the D4H **Communications** section, compose a new message, and paste the content into the email body. The formatted list of exercises will appear.
+4. Go to the D4H **Communications** section, compose a new message, and paste the content into the email body. The formatted list will appear.
