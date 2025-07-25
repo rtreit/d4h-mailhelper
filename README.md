@@ -4,7 +4,7 @@ This browser extension simplifies the process of sharing D4H links in emails. Or
 
 The main functionality is to provide an easy way to generate email-ready links for any of these pages.
 
-![Extension Icon](icon.png)
+![Extension Icon](icon-128.png)
 
 ## Key Features
 

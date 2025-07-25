@@ -1,16 +1,16 @@
 {
   "name": "D4H Mail Helper",
-  "description": "Copy a ready-made exercise list to the clipboard.",
+  "description": "Copy D4H exercise, incident, or event details to clipboard for easy D4H email sharing.",
   "version": "0.1",
   "manifest_version": 3,
   "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
   },
   "action": {
     "default_title": "D4H Mail Helper",
-    "default_icon": "icon.png"
+    "default_icon": "icon-128.png"
   },
   "background": {
     "service_worker": "background.js"
