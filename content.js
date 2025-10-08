@@ -5,9 +5,45 @@
 
   console.log(`D4H Mail Helper v${VERSION}: Content script loaded on ${window.location.href}`);
   
-  // ----- helper to make <a> … </a> blocks -----------------------------
-  const makeAnchor = (href, text) =>
-    `<a href="${href}">${text.replace(/\s+/g, " ").trim()}</a>`;
+  // ----- Security: HTML escaping to prevent XSS -----------------------------
+  const escapeHtml = (str) => {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  };
+
+  // ----- Security: Validate D4H URLs -----------------------------
+  const isValidD4HURL = (url) => {
+    try {
+      const urlObj = new URL(url);
+      // Only allow d4h.com, d4h.org, and team-manager.us.d4h.com domains
+      const allowedDomains = [
+        'd4h.com',
+        'd4h.org',
+        'app.d4h.com',
+        'secure.d4h.com',
+        'team-manager.us.d4h.com'
+      ];
+      return allowedDomains.some(domain => 
+        urlObj.hostname === domain || urlObj.hostname.endsWith('.' + domain)
+      );
+    } catch (e) {
+      return false;
+    }
+  };
+  
+  // ----- helper to make <a> … </a> blocks (with XSS protection) -----------------------------
+  const makeAnchor = (href, text) => {
+    // Validate URL is from D4H domain
+    if (!isValidD4HURL(href)) {
+      console.warn('D4H Mail Helper: Rejected non-D4H URL:', href);
+      return escapeHtml(text);
+    }
+    // Escape HTML in both href and text to prevent XSS
+    const safeHref = escapeHtml(href);
+    const safeText = escapeHtml(text.replace(/\s+/g, " ").trim());
+    return `<a href="${safeHref}">${safeText}</a>`;
+  };
 
   // Determine which type of items we are on (exercises, incidents, events)
   const ITEM_LABEL = (() => {
@@ -142,7 +178,7 @@
       }
     });
 
-    // Fallback copy method using execCommand
+    // Fallback copy method using execCommand (deprecated but kept for older browser compatibility)
     function fallbackCopyMethod(html) {
       // Create a temporary, editable element to hold the HTML
       const container = document.createElement('div');

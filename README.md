@@ -48,3 +48,23 @@ No technical knowledge is needed to install this extension. Follow these steps f
 2. You will see an orange **"Copy"** button in the top-right corner of the table.
 3. Click the button. A confirmation message will appear, letting you know the list has been copied.
 4. Go to the D4H **Communications** section, compose a new message, and paste the content into the email body. The formatted list will appear.
+
+## Security
+
+This extension has been security reviewed and implements several protections:
+
+- **XSS Prevention**: All user inputs are sanitized before HTML generation
+- **URL Validation**: Only D4H domain URLs are processed
+- **Content Security Policy**: Strict CSP prevents unauthorized script execution
+- **Minimal Permissions**: Extension only requests necessary permissions
+- **No External Dependencies**: Pure JavaScript with no third-party libraries
+
+For detailed security information, see [SECURITY.md](SECURITY.md).
+
+### Reporting Security Issues
+
+If you discover a security vulnerability, please:
+1. **DO NOT** open a public issue
+2. Contact the repository maintainer directly
+3. Follow responsible disclosure practices
+
