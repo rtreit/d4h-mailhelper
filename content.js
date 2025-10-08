@@ -16,6 +16,12 @@
   const isValidD4HURL = (url) => {
     try {
       const urlObj = new URL(url);
+      
+      // Only allow HTTP and HTTPS protocols
+      if (urlObj.protocol !== 'http:' && urlObj.protocol !== 'https:') {
+        return false;
+      }
+      
       // Only allow d4h.com, d4h.org, and team-manager.us.d4h.com domains
       const allowedDomains = [
         'd4h.com',
