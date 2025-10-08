@@ -73,5 +73,8 @@
     "*://app.d4h.com/*",
     "*://secure.d4h.com/*",
     "*://*.team-manager.us.d4h.com/*"
-  ]
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
 }
